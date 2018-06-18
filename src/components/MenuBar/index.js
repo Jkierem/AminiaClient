@@ -1,14 +1,14 @@
 import React from 'react'
 
-class Aminia extends React.Component{
+class MenuBar extends React.Component{
 	constructor(props){
 		super(props);
 		this.state={}
 	}
 
 	render(){
-		return(<div> Aminia </div>);
+		return(<div> MenuBar </div>);
 	}
 }
 
-export default Aminia;
+export default MenuBar;
