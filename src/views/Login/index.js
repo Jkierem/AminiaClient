@@ -1,14 +1,14 @@
 import React from 'react'
 
-class ActionLog extends React.Component{
+class Login extends React.Component{
 	constructor(props){
 		super(props);
 		this.state={}
 	}
 
 	render(){
-		return(<div> ActionLog </div>);
+		return(<div> Login </div>);
 	}
 }
 
-export default ActionLog;
+export default Login;

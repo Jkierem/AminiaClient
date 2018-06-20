@@ -1,3 +1,4 @@
-export { default as ActionLog } from './ActionLog';
-export { default as MenuBar } from './MenuBar';
+export { default as ActionLine } from './ActionLine';
+export { default as MenuOption } from './MenuOption';
+export { default as Text } from './Text';
 export { default as WorldWindow } from './WorldWindow';
