@@ -15,10 +15,15 @@ class ActionLog extends React.Component{
 
 	getScrollStyle = () => {
 		return {
-			"height": "100px",
-			"width":"500px",
+			"minHeight": "100px",
+			"minWidth":"500px",
+			"position":"relative",
+			"height":"100%",
+			"width":"100%",
 			"border":"solid",
-			"borderRadius":"25px"
+			"borderRadius":"25px",
+			"boxSizing":"border-box",
+			"backgroundColor":"white"
 		}
 	}
 
@@ -49,14 +54,16 @@ class ActionLog extends React.Component{
 
 	render(){
 		return(
-			<Scrollbars
-				ref="scroller"
-				renderTrackVertical={this.renderTrack}
-				style={this.getScrollStyle()}>
-				<div style={{ "display":"flex", "flexDirection":"column"}}>
-					{this.renderText()}
-				</div>
-			</Scrollbars>
+			<div style={{"position":"relative", "height":"100%"}}>
+				<Scrollbars
+					ref="scroller"
+					renderTrackVertical={this.renderTrack}
+					style={this.getScrollStyle()}>
+					<div style={{ "display":"flex", "flexDirection":"column"}}>
+						{this.renderText()}
+					</div>
+				</Scrollbars>
+			</div>
 		);
 	}
 }

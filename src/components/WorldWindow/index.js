@@ -7,7 +7,22 @@ class WorldWindow extends React.Component{
 	}
 
 	render(){
-		return(<div> WorldWindow </div>);
+		return(
+			<div style={{
+				"display":"flex",
+				"alignItems": "center",
+				"justifyContent": "center",
+				"position":"relative",
+				"height":"100%",
+				"width":"100%",
+				"backgroundColor":"white",
+				"border":"solid",
+				"borderRadius":"25px",
+				"boxSizing":"border-box"
+			}}>
+				I am ze wooooooorld!
+			</div>
+		);
 	}
 }
 

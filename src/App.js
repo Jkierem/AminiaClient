@@ -1,5 +1,6 @@
 import React from 'react';
 import { Login , MainMenu } from './views';
+import { AppContainer } from './components'
 import Cookie from './resources/Cookie';
 
 class App extends React.Component{
@@ -45,11 +46,17 @@ class App extends React.Component{
 	}
 
 	render(){
+		let app = {}
 		if( this.state.user === undefined ){
-			return <Login />
+			app = <Login />
 		}else{
-			return <MainMenu />
+			app = <MainMenu />
 		}
+		return(
+			<AppContainer>
+				{app}
+			</AppContainer>
+		)
 	}
 }
 
