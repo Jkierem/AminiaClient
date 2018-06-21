@@ -1,6 +1,19 @@
 import React from 'react'
-import { GameScreen } from '../'
-//import { MenuOption } from '../../components'
+import { SaveList } from '../../collections'
+import { SaveSlot } from '../../components'
+//import { GameScreen } from '../'
+
+const defaultSaves = [
+	{
+		state: "empty"
+	},
+	{
+		state: "empty"
+	},
+	{
+		state: "empty"
+	}
+]
 
 class MainMenu extends React.Component{
 	constructor(props){
@@ -8,9 +21,18 @@ class MainMenu extends React.Component{
 		this.state={}
 	}
 
+	renderSaves = () => {
+		const { saves=defaultSaves } = this.props;
+		return saves.map((save) => (
+			<SaveSlot save={save}/>
+		))
+	}
+
 	render(){
 		return(
-			<GameScreen />
+			<SaveList>
+				{this.renderSaves()}
+			</SaveList>
 		);
 	}
 }

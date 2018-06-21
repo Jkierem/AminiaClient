@@ -1,0 +1,34 @@
+@font-face {
+  font-family: ArcadeN;
+  src:url("./files/ARCADE_N.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: ArcadeClassic;
+  src:url("./files/ARCADECLASSIC.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: Emulogic;
+  src:url("./files/emulogic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: PreschoolBits;
+  src:url("./files/PreschoolBits.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: PressStart;
+  src:url("./files/prstart.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: PressStartK;
+  src:url("./files/prstartk.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: VT323;
+  src:url("./files/VT323-Regular.ttf") format("truetype");
+}
