@@ -1,4 +1,5 @@
 import React from 'react'
+import { menubarStyle } from '../../resources/Styles'
 
 class MenuBar extends React.Component{
 	constructor(props){
@@ -8,19 +9,8 @@ class MenuBar extends React.Component{
 
 	render(){
 		return(
-			<div style={{
-				"display":"flex",
-				"alignItems": "center",
-				"justifyContent": "center",
-				"position":"relative",
-				"height":"100%",
-				"width":"100%",
-				"backgroundColor":"white",
-				"border":"solid",
-				"borderRadius":"25px",
-				"boxSizing":"border-box"
-			}}>
-				I am a menu
+			<div style={menubarStyle}>
+				{this.props.children}
 			</div>
 		);
 	}
