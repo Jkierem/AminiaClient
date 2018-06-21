@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "jquery": "^3.3.1",
+    "juanform": "^1.0.0",
     "juanstate": "^1.2.0",
     "react": "^16.4.1",
     "react-custom-scrollbars": "^4.2.1",
