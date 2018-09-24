@@ -1,30 +1,37 @@
 import React from 'react'
-import { saveGridStyle , saveGridItem , selectedSaveStyle , saveStyle } from '../../resources/Styles'
+import { Save , SaveGrid , SelectedSave , Name , Level , Progress , Location } from './styles'
 
 class SaveSlot extends React.Component{
 	constructor(props){
 		super(props);
 		this.state={
-			saveStyle: saveStyle
+			SaveComponent: Save,
 		}
 	}
 
 	handleMouseEnter = () => {
 		this.setState({
-			saveStyle: selectedSaveStyle
+			SaveComponent: SelectedSave
 		})
 	}
 
 	handleMouseLeave = () => {
 		this.setState({
-			saveStyle: saveStyle
+			SaveComponent: Save
 		})
 	}
 
+	handleClick = (e) => {
+		const { onClick } = this.props;
+		if( onClick ){
+			onClick(e,this.props.save)
+		}
+	}
+
 	render(){
-		const { state } = this.props.save;
+		const { state: saveState } = this.props.save;
 		let info = {}
-		if( state === "empty" ){
+		if( saveState === "empty" ){
 			info={
 				name: "None",
 				lvl: 0,
@@ -32,7 +39,7 @@ class SaveSlot extends React.Component{
 				progress: 0
 			};
 		}else{
-			const { main , players , progress , location } = state;
+			const { main , players , progress , location } = saveState;
 			const pc = players.filter((player) => {
 				return player.name === main
 			})[0]
@@ -44,16 +51,17 @@ class SaveSlot extends React.Component{
 			}
 		}
 		const { name , lvl , location , progress } = info;
-		const { handleMouseEnter:enter , handleMouseLeave:leave } = this;
+		const { handleMouseEnter:enter , handleMouseLeave:leave , handleClick:click } = this;
+		const { SaveComponent } = this.state;
 		return (
-			<div style={this.state.saveStyle} onMouseEnter={enter} onMouseLeave={leave}>
-				<div style={saveGridStyle}>
-					<div style={saveGridItem("name")}>{`${name}`}</div>
-					<div style={saveGridItem("lvl","flex-end")} >{`lvl ${lvl}`}</div>
-					<div style={saveGridItem("loc")} >{`${location}`}</div>
-					<div style={saveGridItem("prg","flex-end")} >{`${progress}%`}</div>
-				</div>
-			</div>
+			<SaveComponent onMouseEnter={enter} onMouseLeave={leave} onClick={click}>
+				<SaveGrid>
+					<Name>{`${name}`}</Name>
+					<Level>{`lvl ${lvl}`}</Level>
+					<Location>{`${location}`}</Location>
+					<Progress>{`${progress}%`}</Progress>
+				</SaveGrid>
+			</SaveComponent>
 		)
 	}
 }

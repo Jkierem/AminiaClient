@@ -1,5 +1,6 @@
 import React from 'react'
 import { ActionLine } from '../../components'
+import { scrollStyle , ActionLogContainer , TextContainer } from './styles'
 import { Scrollbars } from "react-custom-scrollbars"
 
 class ActionLog extends React.Component{
@@ -8,22 +9,6 @@ class ActionLog extends React.Component{
 		const { actions } = props;
 		this.state = {
 			actions: actions
-		}
-	}
-
-	renderTrack = () => ( <div style={{"display":"none"}}/> )
-
-	getScrollStyle = () => {
-		return {
-			"minHeight": "100px",
-			"minWidth":"500px",
-			"position":"relative",
-			"height":"100%",
-			"width":"100%",
-			"border":"solid",
-			"borderRadius":"25px",
-			"boxSizing":"border-box",
-			"backgroundColor":"white"
 		}
 	}
 
@@ -45,25 +30,25 @@ class ActionLog extends React.Component{
 		const { actions } = this.state;
 		return actions.map((action,index) => {
 			return <ActionLine
-							type={action.type}
-							info={action.info}
-							key={index}
-						 />
+				key={index}
+				type={action.type}
+				info={action.info}
+			/>
 		})
 	}
 
 	render(){
 		return(
-			<div style={{"position":"relative", "height":"100%"}}>
+			<ActionLogContainer>
 				<Scrollbars
 					ref="scroller"
-					renderTrackVertical={this.renderTrack}
-					style={this.getScrollStyle()}>
-					<div style={{ "display":"flex", "flexDirection":"column"}}>
+					renderTrackVertical={() => (<div style={{display:"none"}}/>)}
+					style={scrollStyle}>
+					<TextContainer>
 						{this.renderText()}
-					</div>
+					</TextContainer>
 				</Scrollbars>
-			</div>
+			</ActionLogContainer>
 		);
 	}
 }

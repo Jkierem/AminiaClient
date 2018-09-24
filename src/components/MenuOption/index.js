@@ -1,12 +1,14 @@
 import React from 'react'
 import { Arrow } from '../'
-import { menuOptionStyle , disabledMenuOptionStyle } from '../../resources/Styles'
+import { enabled , disabled } from './styles'
 
 class MenuOption extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			style: this.getStyle()
+			Component: props.disabled ? disabled : enabled,
+			color: props.color,
+			textColor: props.textColor,
 		}
 	}
 
@@ -16,21 +18,13 @@ class MenuOption extends React.Component{
 		}
 	}
 
-	getStyle = () => {
-		if( this.props.disabled ){
-			return disabledMenuOptionStyle;
-		}else{
-			const { color , textColor } = this.props
-			return menuOptionStyle(color,textColor)
-		}
-	}
-
 	handleMouseEnter = () => {
 		if( !this.props.disabled ){
 			if( this.props.colorHover ){
 				const { hoverColor="LightGreen" , hoverTextColor="DarkGreen" } = this.props
 				this.setState({
-					style: menuOptionStyle(hoverColor, hoverTextColor)
+					color: hoverColor,
+					textColor: hoverTextColor
 				})
 			}else{
 				this.setState({ hovered: true })
@@ -42,7 +36,10 @@ class MenuOption extends React.Component{
 		if( !this.props.disabled ){
 			if( this.props.colorHover ){
 				const { color , textColor } = this.props
-				this.setState({ style : menuOptionStyle(color,textColor) })
+				this.setState({
+					color,
+					textColor
+				})
 			}else{
 				this.setState({ hovered: false })
 			}
@@ -50,18 +47,17 @@ class MenuOption extends React.Component{
 	}
 
 	render(){
-		const { style , hovered=this.props.active } = this.state
-		const { label=this.props.children } = this.props
-		const content = label;
-		const { textColor } = this.props
+		const { hovered=this.props.active , Component , color , textColor } = this.state
+		const { label:content=this.props.children } = this.props
 		const {
 			handleClick: click ,
 			handleMouseEnter: enter ,
-			handleMouseLeave: leave
+			handleMouseLeave: leave ,
 		} = this
 		return(
-			<div
-				style={style}
+			<Component
+				color={color}
+				textColor={textColor}
 				onClick={click}
 				onMouseEnter={enter}
 				onMouseLeave={leave}
@@ -69,7 +65,7 @@ class MenuOption extends React.Component{
 				{ hovered && <Arrow direction={"right"} color={textColor}/>}
 				{ content }
 				{ hovered && <Arrow direction={"left"} color={textColor}/>}
-			</div>
+			</Component>
 		);
 	}
 }

@@ -1,19 +1,16 @@
 import React from 'react'
-import { menubarStyle } from '../../resources/Styles'
+import styled from 'styled-components'
+import { flexStyle , boxStyle } from '../../resources/Styles'
 
-class MenuBar extends React.Component{
-	constructor(props){
-		super(props);
-		this.state={}
-	}
+const Comp = styled.main`
+  ${flexStyle("column","flex-start")}
+  ${boxStyle()}
+  padding: 10px;
+  position: relative;
+  height: 100%;
+  width: 100%;
+`
 
-	render(){
-		return(
-			<div style={menubarStyle}>
-				{this.props.children}
-			</div>
-		);
-	}
-}
+const MenuBar = (props) => <Comp>{props.children}</Comp>
 
 export default MenuBar;

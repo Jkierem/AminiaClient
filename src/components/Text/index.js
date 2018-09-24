@@ -1,24 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
 
-class Text extends React.Component{
-	constructor(props){
-		super(props);
-		this.state={}
-	}
+const Comp = styled.span`
+	color: ${({color="black"}) => color};
+	word-wrap: ${({wrap="break-word"}) => wrap};
+`
 
-	getStyle= (color="black",wrap="break-word") =>({
-		"color":color,
-	  "wordWrap": wrap
-	})
-
-	render(){
-		const { color , wrap } = this.props;
-		const { text=this.props.children } = this.props;
-		const textStyle = this.getStyle(color,wrap);
-		return(
-			<span style={textStyle}>{text}</span>
-		);
-	}
+const Text = (props) => {
+	const { text=props.children } = props;
+	return <Comp {...props}>{text}</Comp>
 }
 
 export default Text;

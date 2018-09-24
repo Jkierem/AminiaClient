@@ -1,11 +1,23 @@
 import React from 'react'
 import { SaveList } from '../../collections'
 import { SaveSlot } from '../../components'
-//import { GameScreen } from '../'
+import { GameScreen } from '../'
 
 const defaultSaves = [
 	{
-		state: "empty"
+		state: {
+			main: "Juan",
+			location: "Asaroth",
+			progress: "99",
+			players: [
+				{
+					name: "Juan",
+					status: {
+						LVL: 42
+					}
+				}
+			]
+		}
 	},
 	{
 		state: "empty"
@@ -18,22 +30,35 @@ const defaultSaves = [
 class MainMenu extends React.Component{
 	constructor(props){
 		super(props);
-		this.state={}
+		this.state={
+			loadGame: false,
+		}
 	}
 
 	renderSaves = () => {
 		const { saves=defaultSaves } = this.props;
-		return saves.map((save) => (
-			<SaveSlot save={save}/>
+		const { loadSave } = this;
+		return saves.map((save,key) => (
+			<SaveSlot save={save} key={key} onClick={loadSave}/>
 		))
 	}
 
+	loadSave = (e, save) => {
+		this.setState({
+			loadGame: true,
+		})
+	}
+
 	render(){
-		return(
-			<SaveList>
-				{this.renderSaves()}
-			</SaveList>
-		);
+		if( this.state.loadGame ){
+			return (<GameScreen />)
+		}else{
+			return(
+				<SaveList>
+					{this.renderSaves()}
+				</SaveList>
+			);
+		}
 	}
 }
 

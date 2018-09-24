@@ -1,29 +1,15 @@
 import React from 'react'
+import styled from 'styled-components'
+import { flexStyle , boxStyle } from '../../resources/Styles'
 
-class WorldWindow extends React.Component{
-	constructor(props){
-		super(props);
-		this.state={}
-	}
+export const World = styled.div`
+  ${flexStyle()}
+  ${boxStyle()}
+  width: 100%;
+	height: 100%;
+  position: relative;
+`
 
-	render(){
-		return(
-			<div style={{
-				"display":"flex",
-				"alignItems": "center",
-				"justifyContent": "center",
-				"position":"relative",
-				"height":"100%",
-				"width":"100%",
-				"backgroundColor":"white",
-				"border":"solid",
-				"borderRadius":"25px",
-				"boxSizing":"border-box"
-			}}>
-				I am ze wooooooorld!
-			</div>
-		);
-	}
-}
+const WorldWindow = () => <World>I am ze wooooooorld!</World>
 
 export default WorldWindow;

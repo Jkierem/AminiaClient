@@ -1,10 +1,11 @@
 import React from 'react'
-import { saveListStyle } from '../../resources/Styles'
+import styled from 'styled-components'
+import { flexStyle } from '../../resources/Styles'
 
-export default function SaveList(props){
-	return(
-		<div style={saveListStyle}>
-			{props.children}
-		</div>
-	)
-};
+const Comp = styled.section`
+	${flexStyle("column")}
+`
+
+const SaveList = ({children}) => <Comp>{children}</Comp>
+
+export default SaveList;

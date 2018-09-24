@@ -5,18 +5,20 @@
   "dependencies": {
     "jquery": "^3.3.1",
     "juanform": "^1.0.0",
-    "juanstate": "^1.2.0",
     "react": "^16.4.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.4.1",
-    "react-grid-layout": "^0.16.6",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "styled-components": "^3.4.9"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.7.1"
   }
 }

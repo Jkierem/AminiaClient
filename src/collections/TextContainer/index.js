@@ -1,18 +1,10 @@
 import React from 'react'
+import styled from 'styled-components'
 
-class TextContainer extends React.Component{
-	constructor(props){
-		super(props);
-		this.state={}
-	}
+const Comp = styled.article`
+	padding: 10px;
+`
 
-	render(){
-		return(
-			<article style={{"padding":"10px"}}>
-				{this.props.children}
-			</article>
-		);
-	}
-}
+const TextContainer = ({children}) => <Comp>{children}</Comp>
 
 export default TextContainer;
