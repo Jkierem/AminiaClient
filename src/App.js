@@ -37,24 +37,17 @@ class App extends React.Component{
 			this.setState({
 				user: user
 			});
-		}else{
-			// TODO: erase this code
+		}else{/*
 			this.setState({
-				user: this.getUserInfo("null")
-			})
+				user: { name : "juan"}
+			});*/
 		}
 	}
 
 	render(){
-		let app = {}
-		if( this.state.user === undefined ){
-			app = <Login />
-		}else{
-			app = <MainMenu />
-		}
 		return(
 			<AppContainer>
-				{app}
+				{this.state.user ? <MainMenu/> : <Login/>}
 			</AppContainer>
 		)
 	}

@@ -4171,9 +4171,11 @@ jsx-ast-utils@^2.0.0:
   dependencies:
     array-includes "^3.0.3"
 
-juanform@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/juanform/-/juanform-1.0.0.tgz#bcd6be95a037b4b2dd9d2980b12e2c924b685af5"
+juanform@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/juanform/-/juanform-2.2.2.tgz#231ec4e6c33da6f3e8ff69024f89a0f7fb8a9caf"
+  dependencies:
+    styled-components "^3.4.9"
 
 killable@^1.0.0:
   version "1.0.0"
