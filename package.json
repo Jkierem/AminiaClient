@@ -5,7 +5,10 @@
   "dependencies": {
     "jquery": "^3.3.1",
     "juanform": "^1.0.0",
+    "mobx": "^5.1.2",
+    "mobx-react": "^5.2.8",
     "react": "^16.4.1",
+    "react-app-rewire-mobx": "^1.0.9",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
@@ -13,12 +16,13 @@
     "styled-components": "^3.4.9"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.7.1"
+    "babel-plugin-styled-components": "^1.7.1",
+    "react-app-rewired": "^1.6.2"
   }
 }
