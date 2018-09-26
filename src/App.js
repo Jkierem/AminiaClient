@@ -1,15 +1,16 @@
 import React from 'react';
+import { observer } from 'mobx-react'
 import { Redirect , Route , Switch } from 'react-router-dom';
 import { MainMenuRender , LoginRender , GameScreenRender , SavesRender } from './routes';
 import { AppContainer } from './components'
-import Cookie from './resources/Cookie';
+import * as constants from './stores/constants'
+//import Cookie from './resources/Cookie';
 
+@observer
 class App extends React.Component{
 	constructor(props){
 		super(props);
-		this.state={
-			user: undefined
-		}
+		console.log(props.store.userStatus)
 	}
 
 	getUserInfo = (userId) =>{
@@ -30,20 +31,19 @@ class App extends React.Component{
 		}
 	}
 
-	setUser = ({ username }) => {
-		this.setState({
-			user: username
-		})
+	login = ({username,password}) => {
+		this.props.store.attempLogin(username,password)
 	}
 
 	logout = () => {
-		this.setState({
-			user: undefined
-		})
+		console.log("logout")
+		this.props.store.logout();
 	}
 
 	renderRoutes = () => {
-		if( this.state.user ){
+		const { store } = this.props
+		console.log(store.userState == constants.IN)
+		if( store.userState === constants.IN ){
 			return (
 				<Switch>
 					<Route exact path={"/menu"} render={MainMenuRender({ logout:this.logout})}/>
@@ -55,26 +55,20 @@ class App extends React.Component{
 		}else{
 			return(
 				<Switch>
-					<Route exact path={"/login"} render={LoginRender({ onLogin:this.setUser })}/>
+					<Route exact path={"/login"} render={LoginRender({ onLogin:this.login })}/>
 					<Route render={()=><Redirect to={"/login"}/>} />
 				</Switch>
 			)
 		}
 	}
 
-	componentWillMount = () =>{
+	componentWillMount(){
 		//Check for cookies
-		if( Cookie.hasCookie("user") ){
+		/*if( Cookie.hasCookie("user") ){
 			let userId = Cookie.getCookie("user");
 			let user = this.getUserInfo(userId);
-			this.setState({
-				user: user
-			});
-		}else{/*
-			this.setState({
-				user: { name : "juan"}
-			});*/
-		}
+			this.props.store.setUser(user)
+		}*/
 	}
 
 	render(){
