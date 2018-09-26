@@ -4,7 +4,7 @@ import { flexStyle } from '../../resources/Styles'
 import "../../resources/Fonts/style.css";
 
 const StyledComp = styled.div`
-	${flexStyle()}
+	${flexStyle("column")}
 	box-sizing: border-box;
 	width: 100%;
 	height: 100vh;

@@ -1,49 +1,27 @@
 import React from 'react';
-import { observer } from 'mobx-react'
+import { withRouter } from 'react-router'
+import { observer , inject } from 'mobx-react'
 import { Redirect , Route , Switch } from 'react-router-dom';
 import { MainMenuRender , LoginRender , GameScreenRender , SavesRender } from './routes';
 import { AppContainer } from './components'
 import * as constants from './stores/constants'
-//import Cookie from './resources/Cookie';
 
+@inject("store")
+@withRouter
 @observer
 class App extends React.Component{
-	constructor(props){
-		super(props);
-		console.log(props.store.userStatus)
-	}
-
-	getUserInfo = (userId) =>{
-		// TODO: Change function for a call to backend
-		return {
-			username: "jkierem",
-			saves:[
-				{
-					state: "empty"
-				},
-				{
-					state: "empty"
-				},
-				{
-					state: "empty"
-				}
-			]
-		}
-	}
 
 	login = ({username,password}) => {
 		this.props.store.attempLogin(username,password)
 	}
 
 	logout = () => {
-		console.log("logout")
 		this.props.store.logout();
 	}
 
 	renderRoutes = () => {
 		const { store } = this.props
-		console.log(store.userState == constants.IN)
-		if( store.userState === constants.IN ){
+		if( store.userStatus === constants.IN ){
 			return (
 				<Switch>
 					<Route exact path={"/menu"} render={MainMenuRender({ logout:this.logout})}/>
@@ -62,19 +40,10 @@ class App extends React.Component{
 		}
 	}
 
-	componentWillMount(){
-		//Check for cookies
-		/*if( Cookie.hasCookie("user") ){
-			let userId = Cookie.getCookie("user");
-			let user = this.getUserInfo(userId);
-			this.props.store.setUser(user)
-		}*/
-	}
-
 	render(){
 		return(
 			<AppContainer>
-				{this.renderRoutes()}
+				{ this.renderRoutes() }
 			</AppContainer>
 		)
 	}

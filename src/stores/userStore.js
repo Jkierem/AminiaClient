@@ -2,7 +2,7 @@ import { observable , action } from 'mobx'
 import { IN , OUT , PENDING , LOGIN_ERROR } from './constants'
 
 const mockFetch = (username , password) => new Promise(function(resolve, reject) {
-  if( username == "juan" ){
+  if( username === "juan" ){
     resolve({ name: "juan" })
   }else{
     reject({ error: "Invalid username or password"})
@@ -14,7 +14,7 @@ class UserStore {
   @observable userStatus = OUT;
   @observable error = "";
 
-  @action.bound
+  @action
   attempLogin(username,password){
     this.userStatus = PENDING;
     mockFetch(username,password)
@@ -34,13 +34,13 @@ class UserStore {
     this.userStatus = LOGIN_ERROR;
   }
 
-  @action.bound
+  @action
   logout(){
     this.user = {}
     this.userStatus = OUT;
   }
 
-  @action.bound
+  @action
   setUser(user){
     this.user = user;
     this.userState = IN;
