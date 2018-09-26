@@ -1,5 +1,6 @@
 import React from 'react';
-import { Login , MainMenu } from './views';
+import { Redirect , Route , Switch } from 'react-router-dom';
+import { MainMenuRender , LoginRender , GameScreenRender , SavesRender } from './routes';
 import { AppContainer } from './components'
 import Cookie from './resources/Cookie';
 
@@ -29,6 +30,38 @@ class App extends React.Component{
 		}
 	}
 
+	setUser = ({ username }) => {
+		this.setState({
+			user: username
+		})
+	}
+
+	logout = () => {
+		this.setState({
+			user: undefined
+		})
+	}
+
+	renderRoutes = () => {
+		if( this.state.user ){
+			return (
+				<Switch>
+					<Route exact path={"/menu"} render={MainMenuRender({ logout:this.logout})}/>
+					<Route exact path={"/game"} render={GameScreenRender()}/>
+					<Route exact path={"/saves"} render={SavesRender()}/>
+					<Route render={()=><Redirect to={"/menu"}/>} />
+				</Switch>
+			)
+		}else{
+			return(
+				<Switch>
+					<Route exact path={"/login"} render={LoginRender({ onLogin:this.setUser })}/>
+					<Route render={()=><Redirect to={"/login"}/>} />
+				</Switch>
+			)
+		}
+	}
+
 	componentWillMount = () =>{
 		//Check for cookies
 		if( Cookie.hasCookie("user") ){
@@ -47,7 +80,7 @@ class App extends React.Component{
 	render(){
 		return(
 			<AppContainer>
-				{this.state.user ? <MainMenu/> : <Login/>}
+				{this.renderRoutes()}
 			</AppContainer>
 		)
 	}

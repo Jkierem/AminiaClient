@@ -12,9 +12,9 @@ class MenuOption extends React.Component{
 		}
 	}
 
-	handleClick = () =>{
+	handleClick = (e) =>{
 		if( this.props.onClick ){
-			this.props.onClick()
+			this.props.onClick(e,this.props)
 		}
 	}
 

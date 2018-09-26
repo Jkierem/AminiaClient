@@ -1,6 +1,6 @@
 import React from 'react'
-import { Form , Field , Label , Button } from 'juanform'
-import { CustomInput } from '../../components'
+import { Form , Label } from 'juanform'
+import { Button , Input , Field } from '../../customForm'
 
 class Login extends React.Component{
 	constructor(props){
@@ -8,18 +8,26 @@ class Login extends React.Component{
 		this.state={}
 	}
 
+	handleLogin = (state) => {
+		if( this.props.onLogin ){
+			this.props.onLogin(state)
+		}
+	}
+
 	render(){
 		return(
-			<Form onSubmit={console.log}>
+			<Form onSubmit={this.handleLogin}>
 				<Field>
 					<Label>Hi who are you?</Label>
-					<CustomInput name={"username"}/>
+					<Input name={"username"}/>
 				</Field>
 				<Field>
-					<Label>What is the secret password?</Label>
-					<CustomInput name={"password"} type={"password"}/>
+					<Label>What is your password?</Label>
+					<Input name={"password"} type={"password"}/>
 				</Field>
-				<Button submit>Submit</Button>
+				<Field>
+					<Button submit>Enter</Button>
+				</Field>
 			</Form>
 		);
 	}

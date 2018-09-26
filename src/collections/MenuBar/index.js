@@ -11,6 +11,10 @@ const Comp = styled.main`
   width: 100%;
 `
 
-const MenuBar = (props) => <Comp>{props.children}</Comp>
+const NoBorder = styled(Comp)`
+  border: none
+`
+
+const MenuBar = (props) => props.noBorder ? <NoBorder>{props.children}</NoBorder> : <Comp>{props.children}</Comp>
 
 export default MenuBar;

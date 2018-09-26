@@ -1,64 +1,46 @@
 import React from 'react'
-import { SaveList } from '../../collections'
-import { SaveSlot } from '../../components'
-import { GameScreen } from '../'
+import styled from 'styled-components'
+import { MenuOption } from '../../components'
 
-const defaultSaves = [
-	{
-		state: {
-			main: "Juan",
-			location: "Asaroth",
-			progress: "99",
-			players: [
-				{
-					name: "Juan",
-					status: {
-						LVL: 42
-					}
-				}
-			]
-		}
-	},
-	{
-		state: "empty"
-	},
-	{
-		state: "empty"
-	}
-]
+const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 30%;
+`
 
 class MainMenu extends React.Component{
 	constructor(props){
 		super(props);
-		this.state={
-			loadGame: false,
+		this.state = {}
+	}
+
+	handleClick = (e,{ info }) => {
+		console.log(this.props)
+		const { router , logout } = this.props
+		switch (info) {
+			case "new":
+				router.history.push("saves")
+				break;
+			case "load":
+				router.history.push("saves")
+				break;
+			default:
+				logout();
 		}
-	}
-
-	renderSaves = () => {
-		const { saves=defaultSaves } = this.props;
-		const { loadSave } = this;
-		return saves.map((save,key) => (
-			<SaveSlot save={save} key={key} onClick={loadSave}/>
-		))
-	}
-
-	loadSave = (e, save) => {
-		this.setState({
-			loadGame: true,
-		})
 	}
 
 	render(){
-		if( this.state.loadGame ){
-			return (<GameScreen />)
-		}else{
-			return(
-				<SaveList>
-					{this.renderSaves()}
-				</SaveList>
-			);
-		}
+		const { handleClick } = this
+		return(
+			<Container>
+				<MenuOption onClick={handleClick} info={"new"}>New Game</MenuOption>
+				<MenuOption onClick={handleClick} info={"load"}>Load Game</MenuOption>
+				<MenuOption onClick={handleClick} info={"quit"} textColor={"DarkRed"}>Quit</MenuOption>
+			</Container>
+		);
 	}
 }
 
