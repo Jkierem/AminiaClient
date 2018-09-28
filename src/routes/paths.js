@@ -1,4 +1,4 @@
-const BASE = process.env.MODE !== 'github' ? "" : "/AminiaClient";
+const BASE = process.env.REACT_APP_ENV === 'github' ? "/AminiaClient" : "";
 
 export const MENU_PATH = `${BASE}/menu`;
 export const GAME_PATH = `${BASE}/game`;

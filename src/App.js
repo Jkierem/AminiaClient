@@ -7,6 +7,8 @@ import { AppContainer } from './components'
 import * as constants from './stores/constants'
 import * as paths from './routes/paths'
 
+console.log(process.env)
+
 @inject("store")
 @withRouter
 @observer
