@@ -5,6 +5,7 @@ import { Redirect , Route , Switch } from 'react-router-dom';
 import { MainMenuRender , LoginRender , GameScreenRender , SavesRender } from './routes';
 import { AppContainer } from './components'
 import * as constants from './stores/constants'
+import * as paths from './routes/paths'
 
 @inject("store")
 @withRouter
@@ -20,21 +21,22 @@ class App extends React.Component{
 	}
 
 	renderRoutes = () => {
+		const { MENU_PATH , GAME_PATH , LOGIN_PATH , SAVES_PATH } = paths;
 		const { store } = this.props
 		if( store.userStatus === constants.IN ){
 			return (
 				<Switch>
-					<Route exact path={"/menu"} render={MainMenuRender({ logout:this.logout})}/>
-					<Route exact path={"/game"} render={GameScreenRender()}/>
-					<Route exact path={"/saves"} render={SavesRender()}/>
-					<Route render={()=><Redirect to={"/menu"}/>} />
+					<Route exact path={MENU_PATH} render={MainMenuRender({ logout:this.logout})}/>
+					<Route exact path={GAME_PATH} render={GameScreenRender()}/>
+					<Route exact path={SAVES_PATH} render={SavesRender()}/>
+					<Route render={()=><Redirect to={MENU_PATH}/>} />
 				</Switch>
 			)
 		}else{
 			return(
 				<Switch>
-					<Route exact path={"/login"} render={LoginRender({ onLogin:this.login })}/>
-					<Route render={()=><Redirect to={"/login"}/>} />
+					<Route exact path={LOGIN_PATH} render={LoginRender({ onLogin:this.login })}/>
+					<Route render={()=><Redirect to={LOGIN_PATH}/>} />
 				</Switch>
 			)
 		}
