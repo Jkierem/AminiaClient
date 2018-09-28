@@ -1,4 +1,4 @@
-const BASE = process.env.REACT_APP_ENV === 'github' ? "/AminiaClient" : "";
+const BASE = process.env.PUBLIC_URL;
 
 export const MENU_PATH = `${BASE}/menu`;
 export const GAME_PATH = `${BASE}/game`;
