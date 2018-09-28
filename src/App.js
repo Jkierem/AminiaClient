@@ -7,23 +7,23 @@ import { AppContainer } from './components'
 import * as constants from './stores/constants'
 import * as paths from './routes/paths'
 
-@inject("store")
+@inject("userStore")
 @withRouter
 @observer
 class App extends React.Component{
 
 	login = ({username,password}) => {
-		this.props.store.attempLogin(username,password)
+		this.props.userStore.attempLogin(username,password)
 	}
 
 	logout = () => {
-		this.props.store.logout();
+		this.props.userStore.logout();
 	}
 
 	renderRoutes = () => {
 		const { MENU_PATH , GAME_PATH , LOGIN_PATH , SAVES_PATH } = paths;
-		const { store } = this.props
-		if( store.userStatus === constants.IN ){
+		const { userStore } = this.props
+		if( userStore.userStatus === constants.IN ){
 			return (
 				<Switch>
 					<Route exact path={MENU_PATH} render={MainMenuRender({ logout:this.logout})}/>

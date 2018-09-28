@@ -10,14 +10,9 @@ const WhiteSpace = styled.div`
 	margin: 20px;
 `
 
-@inject("store")
+@inject("userStore")
 @observer
 class Login extends React.Component{
-	constructor(props){
-		super(props);
-		this.state={}
-	}
-
 	handleLogin = (state) => {
 		if( this.props.onLogin ){
 			this.props.onLogin(state)
@@ -25,7 +20,7 @@ class Login extends React.Component{
 	}
 
 	render(){
-		const { store } = this.props;
+		const { userStore:store } = this.props
 		const { userStatus , error } = store
 		const hasError = userStatus === LOGIN_ERROR
 		return(
@@ -45,7 +40,7 @@ class Login extends React.Component{
 				<Field>
 					<Button secondary>Register</Button>
 				</Field>
-				{ hasError && <ErrorBanner>{error}</ErrorBanner>}
+				{ hasError && <ErrorBanner>{error}</ErrorBanner> }
 			</Form>
 		);
 	}

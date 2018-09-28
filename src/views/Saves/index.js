@@ -29,10 +29,6 @@ const defaultSaves = [
 
 class Saves extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state = {}
-  }
   renderSaves = () => {
     const { saves=defaultSaves } = this.props;
     const { loadSave } = this;
