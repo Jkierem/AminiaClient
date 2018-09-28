@@ -38,7 +38,7 @@ class MainMenu extends React.Component{
 			<Container>
 				<MenuOption onClick={handleClick} info={"new"}>New Game</MenuOption>
 				<MenuOption onClick={handleClick} info={"load"}>Load Game</MenuOption>
-				<MenuOption onClick={handleClick} info={"quit"} textColor={"DarkRed"}>Quit</MenuOption>
+				<MenuOption.Negative	onClick={handleClick}	info={"quit"}>Quit</MenuOption.Negative>
 			</Container>
 		);
 	}

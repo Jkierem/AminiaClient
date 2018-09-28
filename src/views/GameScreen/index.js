@@ -27,16 +27,8 @@ class GameScreen extends React.Component{
 						<MenuOption>Default Menu Option</MenuOption>
 						<MenuOption label={"Click Me!"} onClick={this.addAction}/>
 						<MenuOption colorHover>Color Animation Menu Option</MenuOption>
-						<MenuOption
-							colorHover
-							color="white"
-							textColor="DarkRed"
-							hoverColor="LightCoral"
-							hoverTextColor="DarkRed"
-						>
-							Colored Menu Option
-						</MenuOption>
-						<MenuOption disabled>Diabled Menu Option</MenuOption>
+						<MenuOption.Negative>Negative Menu Option</MenuOption.Negative>
+						<MenuOption disabled>Disabled Menu Option</MenuOption>
 					</MenuBar>
 				</MenuContainer>
 				<WorldContainer>

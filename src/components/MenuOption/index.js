@@ -47,7 +47,7 @@ class MenuOption extends React.Component{
 	}
 
 	render(){
-		const { hovered=this.props.active , Component , color , textColor } = this.state
+		let { hovered=this.props.active , Component , color , textColor } = this.state
 		const { label:content=this.props.children } = this.props
 		const {
 			handleClick: click ,
@@ -69,5 +69,13 @@ class MenuOption extends React.Component{
 		);
 	}
 }
+
+MenuOption.Negative = (props) => <MenuOption {...props} colorHover
+	textColor={"DarkRed"}
+	hoverColor={"LightCoral"}
+	hoverTextColor={"DarkRed"}
+/>
+
+MenuOption.Positive = (props) => <MenuOption {...props} colorHover />
 
 export default MenuOption;
