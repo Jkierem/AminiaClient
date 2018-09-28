@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { MenuOption } from '../../components'
+import { SAVES_PATH } from '../../routes/paths'
 
 const Container = styled.div`
 	display: flex;
@@ -22,10 +23,10 @@ class MainMenu extends React.Component{
 		const { router , logout } = this.props
 		switch (info) {
 			case "new":
-				router.history.push("saves")
+				router.history.push(SAVES_PATH)
 				break;
 			case "load":
-				router.history.push("saves")
+				router.history.push(SAVES_PATH)
 				break;
 			default:
 				logout();

@@ -1,6 +1,7 @@
 import React from 'react'
 import { SaveList } from '../../collections'
 import { SaveSlot } from '../../components'
+import { GAME_PATH } from '../../routes/paths'
 
 const defaultSaves = [
 	{
@@ -41,7 +42,7 @@ class Saves extends React.Component {
   }
 
   loadSave = (e, save) => {
-    this.props.router.history.push("/game")
+    this.props.router.history.push(GAME_PATH)
   }
 
   render(){
