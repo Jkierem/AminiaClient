@@ -2,7 +2,7 @@
   "name": "aminia-client",
   "version": "0.1.1",
   "private": true,
-  "homepage": "https://jkierem.github.io/AminiaClient/",
+  "homepage": "https://aminiateam.github.io/AminiaClient/",
   "dependencies": {
     "jquery": "^3.3.1",
     "juanform": "^2.2.2",
